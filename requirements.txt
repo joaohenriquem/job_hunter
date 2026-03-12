@@ -9,3 +9,6 @@ altair<5
 schedule
 python-dotenv
 extra-streamlit-components
+google-generativeai
+pdfplumber
+fpdf2
