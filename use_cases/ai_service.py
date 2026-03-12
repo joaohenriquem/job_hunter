@@ -24,7 +24,7 @@ def analyze_full_resume(summary: str = "", experience: str = "", skills: str = "
 
     try:
         genai.configure(api_key=api_key)
-        model = genai.GenerativeModel('gemini-2.5-flash')
+        model = genai.GenerativeModel('gemini-1.5-flash')
 
         prompt = f"""
 Você é um Headhunter Sênior especialista em currículos para sistemas ATS.
@@ -90,7 +90,7 @@ def parse_resume_from_pdf_text(raw_text: str) -> dict:
 
     try:
         genai.configure(api_key=api_key)
-        model = genai.GenerativeModel('gemini-2.5-flash')
+        model = genai.GenerativeModel('gemini-1.5-flash')
 
         prompt = f"""
         Você receberá o texto bruto extraído de um currículo em PDF (possivelmente exportado do LinkedIn).

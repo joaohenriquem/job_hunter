@@ -392,12 +392,16 @@ with col_btn:
         with st.spinner("Procurando vagas em seu nome..."):
             scraper_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'background', 'run_scraper.py')
             try:
-                subprocess.run(['python', scraper_path, '--limit', '200', '--no-proxy', '--user-id', str(user_id)], capture_output=True)
-                st.success("Busca finalizada!")
+                # Usa sys.executable para garantir o mesmo venv do Streamlit
+                result = subprocess.run([sys.executable, scraper_path, '--limit', '200', '--no-proxy', '--user-id', str(user_id)], capture_output=True, text=True)
+                if result.returncode == 0:
+                    st.success("Busca finalizada!")
+                else:
+                    st.error(f"O robô retornou um erro: {result.stderr}")
                 time.sleep(2)
                 st.rerun()
             except Exception as e:
-                st.error(f"Erro: {e}")
+                st.error(f"Erro ao disparar o robô: {e}")
         
 if not df_runs.empty:
     view_runs = df_runs.copy()
