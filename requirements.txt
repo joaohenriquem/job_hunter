@@ -1,7 +1,7 @@
 requests
 beautifulsoup4
 ddgs
-pandas==2.2.1
+pandas
 openpyxl
 matplotlib
 streamlit~=1.32.0
